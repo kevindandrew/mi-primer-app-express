@@ -5,10 +5,10 @@
     "description": "Documentacion generada automaticamente por swagger-autogen",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "gdhtg49q-3000.brs.devtunnels.ms",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {

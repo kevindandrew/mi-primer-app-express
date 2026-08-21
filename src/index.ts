@@ -6,10 +6,16 @@ import cursoRouter from "./routes/cursos.routes.js";
 import swaggerUi from "swagger-ui-express";
 import fs from "node:fs";
 import path from "node:path";
+import dotenv from "dotenv";
+import cors from "cors";
+dotenv.config();
+
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
+//si queremos q cualquier persona se pueda conectar
+app.use(cors());
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   const timestamp = new Date().toLocaleTimeString();
@@ -34,4 +40,6 @@ app.use("/cursos", cursoRouter);
 app.listen(PORT, async () => {
   await cargarDatos();
   console.log(`servidor corriendo en el puerto : http://localhost:${PORT}`);
+  console.log(`MODO DE EJECUCION:${process.env.NODE_ENV}`);
+  console.log(`CLAVE API CARGADA ${process.env.API_KEY ? "si" : "no"}`);
 });
